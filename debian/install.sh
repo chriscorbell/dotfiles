@@ -6,7 +6,7 @@ sudo sed -i 's/^deb-src \(.*\) main$/deb-src \1 main contrib non-free non-free-f
 
 # Install base packages
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install zsh nala lsd fzf git wget curl bat btop cifs-utils tar unzip unrar unar unace bzip2 unxz 7zip fastfetch -y
+sudo apt install zsh nala lsd fzf git wget curl bat btop cifs-utils tar unzip unrar unar unace bzip2 xz-utils 7zip fastfetch -y
 
 # Install GitHub CLI
 sudo mkdir -p -m 755 /etc/apt/keyrings
