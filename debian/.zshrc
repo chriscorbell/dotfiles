@@ -25,6 +25,12 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
+# Initialize atuin
+zinit ice as"command" from"gh-r" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
+    atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
+    atpull"%atclone" src"init.zsh"
+zinit light atuinsh/atuin
+
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -81,6 +87,7 @@ alias up="sudo nala update && sudo nala full-upgrade -y"
 alias in="sudo nala install"
 alias un="sudo nala purge"
 alias cat="batcat --theme ansi -pp"
+alias fzfp="fzf --preview='batcat --theme ansi -pp {}'"
 alias grep='grep --color=auto'
 alias gs='git status'
 alias ga='git add .'
