@@ -77,7 +77,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # ==============================
 
 alias ls="ls -alh --color=always"
-alias up="sudo nala update && sudo nala dist-upgrade -y"
+alias up="sudo nala update && sudo nala full-upgrade -y"
 alias in="sudo nala install"
 alias un="sudo nala purge"
 alias cat="batcat --theme ansi -pp"
