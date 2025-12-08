@@ -1,10 +1,8 @@
-    ########  ######  ##     ## ########   ######
-         ##  ##    ## ##     ## ##     ## ##    ##
-        ##   ##       ##     ## ##     ## ##
-       ##     ######  ######### ########  ##
-      ##           ## ##     ## ##   ##   ##
-###  ##      ##    ## ##     ## ##    ##  ##    ##
-### ########  ######  ##     ## ##     ##  ######
+#    ▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄ ▄▄▄   ▄▄▄ ▄▄▄▄▄▄▄    ▄▄▄▄▄▄▄
+#    ▀▀▀▀▀████ █████▀▀▀ ███   ███ ███▀▀███▄ ███▀▀▀▀▀
+#       ▄███▀   ▀████▄  █████████ ███▄▄███▀ ███
+#     ▄███▀       ▀████ ███▀▀▀███ ███▀▀██▄  ███
+# ██ █████████ ███████▀ ███   ███ ███  ▀███ ▀███████
 
 # ==============================
 # Zinit
@@ -96,18 +94,47 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 #  Aliases
 # ==============================
 
+# Detect OS distribution
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    DISTRO=$ID
+else
+    DISTRO="unknown"
+fi
+
+# Common aliases
 alias ls="ls -alh --color=always"
-alias up="sudo nala update && sudo nala full-upgrade -y"
-alias in="sudo nala install"
-alias un="sudo nala purge"
-alias cat="batcat --theme ansi -pp"
-alias fzfp="fzf --preview='batcat --theme ansi -pp {}'"
 alias grep='grep --color=auto'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push origin main'
 alias gpl='git pull'
+
+# Distribution-specific aliases
+case $DISTRO in
+    debian)
+        alias up="sudo nala update && sudo nala full-upgrade -y"
+        alias in="sudo nala install"
+        alias un="sudo nala purge"
+        alias cat="batcat --theme ansi -pp"
+        alias fzfp="fzf --preview='batcat --theme ansi -pp {}'"
+        ;;
+    arch)
+        alias up="yay -Syu"
+        alias in="yay -S"
+        alias un="yay -Rns"
+        alias cat="bat --theme ansi -pp"
+        alias fzfp="fzf --preview='bat --theme ansi -pp {}'"
+        ;;
+    alpine)
+        alias up="sudo apk update && sudo apk upgrade"
+        alias in="sudo apk add"
+        alias un="sudo apk del"
+        alias cat="bat --theme ansi -pp"
+        alias fzfp="fzf --preview='bat --theme ansi -pp {}'"
+        ;;
+esac
 
 gacp() {
   git add .
