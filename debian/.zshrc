@@ -1,11 +1,14 @@
-# ==============================
-#  Zsh Config
-# ==============================
+    ########  ######  ##     ## ########   ######
+         ##  ##    ## ##     ## ##     ## ##    ##
+        ##   ##       ##     ## ##     ## ##
+       ##     ######  ######### ########  ##
+      ##           ## ##     ## ##   ##   ##
+###  ##      ##    ## ##     ## ##    ##  ##    ##
+### ########  ######  ##     ## ##     ##  ######
 
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# ==============================
+# Zinit
+# ==============================
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -49,8 +52,16 @@ zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit && compinit
-
 zinit cdreplay -q
+
+# ==============================
+#  Zsh Config
+# ==============================
+
+# On macOS you want this enabled
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Keybindings
 bindkey -e
@@ -101,7 +112,6 @@ gacp() {
   branch=$(git rev-parse --abbrev-ref HEAD)
   git push origin "$branch"
 }
-
 
 # ==============================
 #  Environment
