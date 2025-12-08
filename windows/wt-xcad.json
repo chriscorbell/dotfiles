@@ -1,8 +1,8 @@
         {
             "name": "xcad",
             "background": "#1A1A1A",
-            "foreground": "#F1F1F1",
-            "selectionBackground": "#FFFFFF",
+            "foreground": "#cedae9",
+            "selectionBackground": "#cedae9",
             "cursorColor": "#FFFFFF",
             "black": "#121212",
             "brightBlack": "#666666",
@@ -16,8 +16,8 @@
             "brightPurple": "#a1c8ff",
             "red": "#c575ff",
             "brightRed": "#d69dff",
-            "white": "#F1F1F1",
-            "brightWhite": "#FFFFFF",
+            "white": "#b9c3cf",
+            "brightWhite": "#cedae9",
             "yellow": "#776bff",
             "brightYellow": "#a29aff"
         }
