@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Configure passwordless sudo for sudo group
+sudo sed -i 's/^%sudo\s\+ALL=(ALL:ALL)\s\+ALL$/%sudo   ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
+
 # Enable non-free and contrib components
 sudo sed -i 's/^deb \(.*\) main$/deb \1 main contrib non-free non-free-firmware/' /etc/apt/sources.list
 sudo sed -i 's/^deb-src \(.*\) main$/deb-src \1 main contrib non-free non-free-firmware/' /etc/apt/sources.list
