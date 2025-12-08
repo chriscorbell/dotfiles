@@ -68,6 +68,9 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+bindkey "^[[3~" delete-char
 
 # History
 HISTSIZE=5000
@@ -113,6 +116,58 @@ gacp() {
   git push origin "$branch"
 }
 
+extract() {
+  export XZ_OPT=-T4
+
+  if [ -z "$1" ]; then
+    echo "Usage: extract filename"
+    echo "Extract a given file based on the extension."
+    return 1
+  elif [ ! -f "$1" ]; then
+    echo "Error: '$1' is not a valid file for extraction"
+    return 1
+  fi
+
+  case "$1" in
+    *.tbz2 | *.tar.bz2) tar -xvjf "$1" ;;
+    *.txz | *.tar.xz) tar -xvJf "$1" ;;
+    *.tgz | *.tar.gz) tar -xvzf "$1" ;;
+    *.tar | *.cbt) tar -xvf "$1" ;;
+    *.tar.zst) tar -xvf "$1" ;;
+    *.zip | *.cbz) unzip "$1" ;;
+    *.rar | *.cbr) unrar x "$1" ;;
+    *.arj) unarj x "$1" ;;
+    *.ace) unace x "$1" ;;
+    *.bz2) bunzip2 "$1" ;;
+    *.xz) unxz "$1" ;;
+    *.gz) gunzip "$1" ;;
+    *.7z) 7z x "$1" ;;
+    *.Z) uncompress "$1" ;;
+    *.gpg) gpg -d "$1" | tar -xvzf - ;;
+    *) echo "Error: failed to extract '$1'" ;;
+  esac
+}
+
+pack() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: pack <format> <file/directory>"
+    echo "Formats: txz, tbz, tgz, tar, bz2, gz, zip, 7z"
+    return 1
+  fi
+
+  case $1 in
+    txz) tar cJvf "$2.tar.xz" "$2" ;;
+    tbz) tar cjvf "$2.tar.bz2" "$2" ;;
+    tgz) tar czvf "$2.tar.gz" "$2" ;;
+    tar) tar cpvf "$2.tar" "$2" ;;
+    bz2) bzip2 "$2" ;;
+    gz) gzip -c -9 -n "$2" > "$2.gz" ;;
+    zip) zip -r "$2.zip" "$2" ;;
+    7z) 7z a "$2.7z" "$2" ;;
+    *) echo "'$1' cannot be packed()" ;;
+  esac
+}
+
 # ==============================
 #  Environment
 # ==============================
@@ -121,20 +176,4 @@ export EDITOR="nano"
 export VISUAL="nano"
 export PAGER="less"
 export LESS="-R"
-
-# ==============================
-#  Path
-# ==============================
-
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
-
-# ==============================
-#  Keybinds
-# ==============================
-
-# Fix Home/End
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
-
-# Fix Delete
-bindkey "^[[3~" delete-char
