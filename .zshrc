@@ -103,8 +103,10 @@ else
 fi
 
 # Common aliases
-alias ls="ls -alh --color=always"
+alias ls="lsd -alh --color=always"
 alias grep='grep --color=auto'
+alias ld='lazydocker'
+alias lg='lazygit'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
@@ -124,13 +126,6 @@ case $DISTRO in
         alias up="yay -Syu"
         alias in="yay -S"
         alias un="yay -Rns"
-        alias cat="bat --theme ansi -pp"
-        alias fzfp="fzf --preview='bat --theme ansi -pp {}'"
-        ;;
-    alpine)
-        alias up="sudo apk update && sudo apk upgrade"
-        alias in="sudo apk add"
-        alias un="sudo apk del"
         alias cat="bat --theme ansi -pp"
         alias fzfp="fzf --preview='bat --theme ansi -pp {}'"
         ;;
