@@ -39,14 +39,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
+zinit snippet OMZP::sudo                # Plugin: Press ESC twice to prefix previous command with sudo
+zinit snippet OMZP::command-not-found   # Plugin: Suggests package to install for missing commands
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -103,6 +97,7 @@ else
 fi
 
 # Common aliases
+alias cd='z'
 alias ls="lsd -alh --color=always"
 alias grep='grep --color=auto'
 alias ld='lazydocker'
