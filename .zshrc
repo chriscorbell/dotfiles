@@ -199,3 +199,5 @@ export VISUAL="nano"
 export PAGER="less"
 export LESS="-R"
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
+
+eval "$(zoxide init zsh)"
