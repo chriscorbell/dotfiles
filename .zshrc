@@ -194,6 +194,6 @@ export VISUAL="nano"
 export PAGER="less"
 export LESS="-R"
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
-export LS_COLORS+=':ow=01;34'
+export LS_COLORS="${LS_COLORS}:ow=01;34"
 
 eval "$(zoxide init zsh)"
