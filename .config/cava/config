@@ -240,27 +240,27 @@ vertex_shader = pass_through.vert
 ; foreground = default
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
-; background = '#111111'
-; foreground = '#33ffff'
+; background = '#282C34'
+; foreground = '#ABB2BF'
 
 
 # Gradient mode, only hex defined colors are supported,
 # background must also be defined in hex or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 1
-gradient_color_1 = '#7081d0'
-gradient_color_2 = '#a48cf2'
-gradient_color_3 = '#04d1f9'
-gradient_color_4 = '#37f499'
+gradient_color_1 = '#61AFEF'
+gradient_color_2 = '#DE73FF'
+gradient_color_3 = '#4CD1E0'
+gradient_color_4 = '#A5E075'
 
 
 # Horizontal is only supported on noncurses output.
 # Only one color will be calculated per bar.
 horizontal_gradient = 1
-horizontal_gradient_color_1 = '#7081d0'
-horizontal_gradient_color_2 = '#a48cf2'
-horizontal_gradient_color_3 = '#04d1f9'
-horizontal_gradient_color_4 = '#37f499'
+horizontal_gradient_color_1 = '#61AFEF'
+horizontal_gradient_color_2 = '#DE73FF'
+horizontal_gradient_color_3 = '#4CD1E0'
+horizontal_gradient_color_4 = '#A5E075'
 
 
 # If both vertical and horizontal gradient is enabled, vertical will be blended in this direction.
