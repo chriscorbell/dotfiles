@@ -27,8 +27,13 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 
 # Initialize atuin
-zinit ice as"command" from"gh-r" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
-    atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
+case "$(uname -m)" in
+  x86_64) ATUIN_ARCH="x86_64" ;;
+  aarch64|arm64) ATUIN_ARCH="aarch64" ;;
+  *) ATUIN_ARCH="x86_64" ;;
+esac
+zinit ice as"command" from"gh-r" bpick"atuin-${ATUIN_ARCH}-unknown-linux-gnu.tar.gz" mv"atuin*/atuin -> atuin" \
+  atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
     atpull"%atclone" src"init.zsh"
 zinit light atuinsh/atuin
 
