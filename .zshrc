@@ -26,7 +26,7 @@ alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git pull'
 alias cat='bat --theme ansi -pp'
-alias ls='eza -a --icons=always'
+alias ls='eza -al --icons=always'
 
 # Git add/commit/push current branch
 gacp() {
